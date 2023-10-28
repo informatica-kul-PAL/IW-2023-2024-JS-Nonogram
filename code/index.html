@@ -1,14 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-        <meta content="utf-8" http-equiv="encoding">
+        <meta content="utf-8" http-equiv="refresh">
         <script src="code.js"></script>
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <title>Nonogram</title>
     </head>
 
     <body>
-        Hello, world!
-        <!-- Schrijf hier je HTML -->
+        <div id="game">
+            <div class="indicator_wrapper upper">
+                <table id="indicator_upper">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="indicator_wrapper left">
+                <table id="indicator_left">
+                    <tr>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="field_wrapper">
+                <table id="field">
+                    <tr>
+                        <td class="checked"></td>
+                        <td class="checked"></td>
+                        <td class="checked"></td>
+                        <td class="filled"></td>
+                        <td class="filled"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="filled"></td>
+                        <td class="filled"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="filled"></td>
+                        <td class="filled"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="filled"></td>
+                        <td class="filled"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="filled"></td>
+                        <td class="filled"></td>
+                        <td class="filled"></td>
+                        <td class="filled"></td>
+                        <td class="filled"></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="lives">
+                <div class="live"></div>
+                <div class="live"></div>
+                <div class="live"></div>
+            </div>
+        </div>
     </body>
 </html>
