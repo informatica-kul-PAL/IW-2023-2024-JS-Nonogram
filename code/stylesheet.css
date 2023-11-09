@@ -12,6 +12,7 @@
     --field-border-colour: black;
     --indicator-border-colour: black;
     --shadow-colour: black;
+    font-size: 13px;
 }
 
 html, body {
