@@ -8,7 +8,7 @@
         <title>Nonogram</title>
     </head>
 
-    <body>
+    <body oncontextmenu="return false;">
         <div id="game">
             <div class="indicator_wrapper upper">
                 <table id="indicator_upper">
@@ -91,6 +91,17 @@
                 <div class="live"></div>
                 <div class="live"></div>
             </div>
+        </div>
+        <div id="gamestats">
+            <div id="timer">00:00</div>
+            <div><span id="click_counter">0</span>moves made</div>
+            <select id="level_select" onchange="game = new Nonogram(this.value)">
+                <option value="trivial">Trivial</option>
+                <option value="easy">Easy</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="hard">Hard</option>
+            </select>
+            <button onclick="game.start()">New game</button>
         </div>
     </body>
 </html>

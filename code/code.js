@@ -59,13 +59,19 @@ class Nonogram {
     timeout_id = -1;
 
     constructor(level_name) {
-        this.level_name = level_name;
         this.solution = LEVELS[level_name];
+        this.start();
+    }
+
+    start() {
+        this.lives = 3;
+        this.click_count = 0;
         this.field = Array(this.height)
             .fill(null)
             .map(() => Array(this.width).fill(0));
         this.draw_all();
         this.hide_pop_up();
+        timer.reset();
     }
 
     get height() {
@@ -80,6 +86,7 @@ class Nonogram {
         this.draw_field();
         this.draw_lives();
         this.draw_indicators();
+        this.draw_click_counter();
     }
 
     draw_lives() {
@@ -138,6 +145,10 @@ class Nonogram {
         return `<tbody>${indicators.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody>`;
     }
 
+    draw_click_counter() {
+        document.getElementById('click_counter').innerHTML = `${this.click_count}`;
+    }
+
     on_click(cell, type) {
         if (this.lives === 0) return;
         this.click_count++;
@@ -158,10 +169,12 @@ class Nonogram {
         this.attempt_to_finish_row(row);
         this.attempt_to_finish_column(column);
         this.draw_field();
-        // this.draw_click_count();
+        this.draw_click_counter();
+        timer.start();
 
         if (this.is_won()) {
-            this.show_pop_up("YOU'VE WON", 'steelblue', -1);
+            timer.stop();
+            this.show_pop_up( `YOU'VE WON ${timer.formatted} ${this.click_count} moves`, 'steelblue', -1);
         }
     }
 
@@ -229,5 +242,48 @@ class Nonogram {
 }
 
 window.onload = (_event) => {
+    timer = new Timer();
     game = new Nonogram('trivial');
 };
+
+class Timer {
+    seconds_passed = 0;
+    interval;
+
+    constructor() {
+        this.draw();
+    }
+
+    draw() {
+        document.getElementById('timer').innerHTML = this.formatted;
+    }
+
+    get formatted() {
+        let seconds = this.seconds_passed % 60;
+        let minutes = Math.floor(this.seconds_passed / 60) % 60;
+        let hours = Math.floor(this.seconds_passed / 3600);
+
+        return `${hours !== 0 ? `${hours}:` : ''}${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    increment() {
+        this.seconds_passed++;
+        this.draw();
+    }
+
+    start() {
+        if (!this.interval)
+            this.interval = setInterval(this.increment.bind(this), 1000);
+    }
+
+    stop() {
+        clearInterval(this.interval);
+        this.interval = undefined;
+    }
+
+    reset() {
+        this.stop();
+        this.seconds_passed = 0;
+        this.draw();
+    }
+}

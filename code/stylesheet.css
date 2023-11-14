@@ -191,3 +191,28 @@ td.checked::before {
 #field_wrapper[data-colour=steelblue]::after {
     background-color: steelblue;
 }
+
+#gamestats {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    text-align: end;
+    font-size: 20px;
+}
+
+#gamestats * {
+    font-size: 20px;
+    margin: 0.5rem
+}
+
+button {
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem var(--shadow-colour);
+}
+
+button:hover {
+    background-color: #e4e8ea;
+}
