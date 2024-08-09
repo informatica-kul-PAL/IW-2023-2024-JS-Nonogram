@@ -1,3 +1,5 @@
+[Klik hier om te spelen!](https://informatica-kul-pal.github.io/IW-2023-2024-JS-Nonogram/code/index.html)
+
 # JavaScript project: 2023-2024
 
 In dit project implementeer je de Nonogram-puzzel in Javascript.
